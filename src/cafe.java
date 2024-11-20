@@ -16,5 +16,9 @@ public enum cafe {
 		users = new HashMap<>();
 	}
 
+	public Map<String, User> getUsers() {
+		return users;
+	}
+
    		// xxx your codes
 }
