@@ -6,7 +6,7 @@ public class AdminDashboard extends JFrame {
     public AdminDashboard(JFrame parent, User admin) {
         super("Admin Dashboard");
         setLayout(new BorderLayout());
-        setSize(735, 446);
+        setSize(400, 365);
         setLocationRelativeTo(parent);
 
         JPanel panel = new JPanel(new GridBagLayout());
@@ -19,6 +19,11 @@ public class AdminDashboard extends JFrame {
         JLabel firstNameLabel = new JLabel("Welcome, " + admin.getFirstName());
         JButton manageCustomersButton = new JButton("Manage Customers");
         JButton manageMenuButton = new JButton("Manage Menu");
+
+        manageCustomersButton.addActionListener(e -> {
+            UserManagerScreen userScreen = new UserManagerScreen(this);
+            userScreen.setVisible(true);
+        });
 
         panel.add(firstNameLabel, gbc);
         panel.add(manageCustomersButton, gbc);
