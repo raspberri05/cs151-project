@@ -63,6 +63,8 @@ public class SignupScreen extends JDialog {
                     Customer customer = new Customer(firstName, lastName, email, username, password, false, new ArrayList<>());
                     manageUsers.addUser(customer);
                 }
+                JOptionPane.showMessageDialog(null, "Sign Up Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
             }
         });
 
