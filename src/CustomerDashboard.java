@@ -1,35 +1,27 @@
 import javax.swing.*;
-import javax.swing.text.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.List;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class CustomerDashboard extends JFrame {
 
-	private UserManager userManager;
-	private User currentUser; // The user who is currently logged in
+   	public CustomerDashboard(JFrame parent, User curr) {
+		super("Customer Dashboard");
+        setLayout(new BorderLayout());
+        setSize(400, 365);
+        setLocationRelativeTo(parent);
 
-	private JTextPane cartPane;
-	private JTextPane billPane;
-	private JTextPane menuPane;
-	private StyledDocument cartDoc;
-	private StyledDocument billDoc;
-	private StyledDocument menuDoc;
+		JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 20, 10, 20);
+        gbc.gridx = 0;
+        gbc.gridy = GridBagConstraints.RELATIVE;
+        gbc.anchor = GridBagConstraints.WEST;
 
-	private JCheckBox breakfastCheckbox;
-	private JCheckBox dinnerCheckbox;
+		JLabel firstNameLabel = new JLabel("Welcome, " + curr.getFirstName());
 
-	private JPanel tipPanel;
-	private ButtonGroup tipGroup;
-	private JRadioButton noTipButton;
-	private JRadioButton tenPercentButton;
-	private JRadioButton fifteenPercentButton;
-	private JRadioButton twentyPercentButton;
+		panel.add(firstNameLabel, gbc);
 
-   	// xxx your codes
+		add(panel, BorderLayout.CENTER);
+
+	}
 }

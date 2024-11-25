@@ -46,7 +46,11 @@ public class LoginScreen extends JDialog {
                     AdminDashboard adminDashboard = new AdminDashboard(parent, loggedInUser);
                     adminDashboard.setVisible(true);
                     dispose();
-
+                }
+                else {
+                    CustomerDashboard customerDashboard = new CustomerDashboard(parent, loggedInUser);
+                    customerDashboard.setVisible(true);
+                    dispose();
                 }
             }
         });
