@@ -33,7 +33,6 @@ public enum cafe {
 	}
 
 	public void addUser(User user) {
-		System.out.println(user.getRole());
 		appendUserToFile(user, "resources/cafeData.txt");
 		loadUsersFromFile("resources/cafeData.txt");
 	}
@@ -65,8 +64,12 @@ public enum cafe {
 		String userName = tokens[4];
 		String password = tokens[5];
 		boolean isActive = Boolean.parseBoolean(tokens[6]);
+		List<String> orderedItems = new ArrayList<>();
+		for (int i = 7; i < tokens.length; i++) {
+			orderedItems.add(tokens[i]);
+		}
 		if (role.equals("Admin")) {
-			Admin admin = new Admin(firstName, lastName, email, userName, password, isActive);
+			Admin admin = new Admin(firstName, lastName, email, userName, password, isActive, orderedItems);
 			users.put(userName, admin);
 		}
 	}

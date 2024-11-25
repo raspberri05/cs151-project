@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 
 public class SignupScreen extends JDialog {
@@ -55,7 +56,7 @@ public class SignupScreen extends JDialog {
                 String password = new String(passwordField.getPassword());
                 String username = createUsername(firstName);
                 if (role.equals("Administrator")) {
-                    Admin admin = new Admin(firstName, lastName, email, username, password, true);
+                    Admin admin = new Admin(firstName, lastName, email, username, password, true, new ArrayList<>());
                     manageUsers.addUser(admin);
                 } 
             }

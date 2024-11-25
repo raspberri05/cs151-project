@@ -14,14 +14,14 @@ public class Admin implements User {
     private static final int MAX_ORDER_LIMIT = 10;
 
     // Constructor to initialize a Admin object 
-    public Admin(String firstName, String lastName, String email, String userName, String password, boolean isActive) {
+    public Admin(String firstName, String lastName, String email, String userName, String password, boolean isActive, List<String> orderedItems) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.userName = userName;
         this.password = password;
         this.isActive = isActive;
-        this.orderedItems = new ArrayList<>();
+        this.orderedItems = orderedItems;
     }
 
     @Override
@@ -110,14 +110,18 @@ public class Admin implements User {
 
 
     public static Admin fromDataString(String data) {
-        String[] parts = data.split(";");
-        String firstName = parts[1];
-        String lastName = parts[2];
-        String email = parts[3];
-        String userName = parts[4];
-        String password = parts[5];
-        boolean isActive = Boolean.parseBoolean(parts[6]);
-        return new Admin(firstName, lastName, email, userName, password, isActive);
+        String[] tokens = data.split(";");
+        String firstName = tokens[1];
+        String lastName = tokens[2];
+        String email = tokens[3];
+        String userName = tokens[4];
+        String password = tokens[5];
+        boolean isActive = Boolean.parseBoolean(tokens[6]);
+        List<String> orderedItems = new ArrayList<>();
+		for (int i = 7; i < tokens.length; i++) {
+			orderedItems.add(tokens[i]);
+		}
+        return new Admin(firstName, lastName, email, userName, password, isActive, orderedItems);
     }
 
     @Override
