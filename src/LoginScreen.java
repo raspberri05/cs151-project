@@ -34,6 +34,23 @@ public class LoginScreen extends JDialog {
 			}
 		});
 
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = usernameField.getText();
+                String password = new String(passwordField.getPassword());
+                UserManager manageUsers = new UserManager();
+                User loggedInUser = manageUsers.login(username, password);
+                String role = loggedInUser.getRole();
+                if (role.equals("Admin")) {
+                    AdminDashboard adminDashboard = new AdminDashboard(parent, loggedInUser);
+                    adminDashboard.setVisible(true);
+                    dispose();
+
+                }
+            }
+        });
+
         panel.add(usernameLabel, gbc);
         panel.add(usernameField, gbc);
         panel.add(passwordLabel, gbc);

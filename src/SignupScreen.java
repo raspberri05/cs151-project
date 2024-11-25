@@ -32,7 +32,7 @@ public class SignupScreen extends JDialog {
         JTextField emailField = new JTextField(20);
         JPasswordField passwordField = new JPasswordField(20);
 
-        String[] roles = {"Customer", "Administrator"};
+        String[] roles = {"Customer", "Admin"};
         JComboBox<String> roleComboBox = new JComboBox<>(roles);
         roleComboBox.setPreferredSize(new Dimension(firstNameField.getPreferredSize()));
 
@@ -55,7 +55,7 @@ public class SignupScreen extends JDialog {
                 String email = emailField.getText();
                 String password = new String(passwordField.getPassword());
                 String username = createUsername(firstName);
-                if (role.equals("Administrator")) {
+                if (role.equals("Admin")) {
                     Admin admin = new Admin(firstName, lastName, email, username, password, true, new ArrayList<>());
                     manageUsers.addUser(admin);
                 }
