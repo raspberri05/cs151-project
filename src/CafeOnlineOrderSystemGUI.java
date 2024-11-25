@@ -38,7 +38,7 @@ public class CafeOnlineOrderSystemGUI extends JFrame{
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LoginScreen loginScreen = new LoginScreen(CafeOnlineOrderSystemGUI.this, myCafe.getUsers());
+                LoginScreen loginScreen = new LoginScreen(CafeOnlineOrderSystemGUI.this);
                 loginScreen.setVisible(true);
             }
         });
@@ -46,7 +46,7 @@ public class CafeOnlineOrderSystemGUI extends JFrame{
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SignupScreen signupScreen = new SignupScreen(CafeOnlineOrderSystemGUI.this, myCafe.getUsers());
+                SignupScreen signupScreen = new SignupScreen(CafeOnlineOrderSystemGUI.this);
                 signupScreen.setVisible(true);
             }
         });

@@ -1,11 +1,9 @@
-import java.util.Map;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class UserManager {
-	
 	public UserManager() {
     }
-	
-   		// xxx your codes
+
+	public void addUser(User user) {
+		cafe DB = cafe.getInstance();
+		DB.addUser(user);
+	}
 }

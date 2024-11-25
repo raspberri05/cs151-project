@@ -2,15 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
 
 public class LoginScreen extends JDialog {
 	
-	private Map<String, User> users;
 
-    public LoginScreen(JFrame parent, Map<String, User> users) {
+    public LoginScreen(JFrame parent) {
         super(parent, "Login", true);
-        UserManager userManager = new UserManager();
         setLayout(new BorderLayout());
         setSize(400, 365);
         setLocationRelativeTo(parent);

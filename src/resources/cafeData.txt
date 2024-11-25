@@ -29,3 +29,4 @@ Customer;Aisha;Lucas;aishlucas@hotmail.com;aisha7757;Password1!;true;
 Admin;Veda;Bandi;vedasahithi.bandi@sjsu.edu;veda8338;Password1!;true;
 Customer;Jane;Doe;janedoe@gmail.com;jane8136;Password1!;true;
 Customer;Cleo;Higgins;cleohiggins@gmail.com;cleo1979;Password1!;true;
+Admin;ff;ff;ff;ff;ff;true

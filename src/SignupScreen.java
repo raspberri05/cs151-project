@@ -2,16 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.Map;
 
 
 public class SignupScreen extends JDialog {
 
-	public SignupScreen(JFrame parent, Map<String, User> users) {
+	public SignupScreen(JFrame parent) {
 		super(parent, "Sign Up", true);
-        UserManager userManager = new UserManager();
+        UserManager manageUsers = new UserManager();
         setLayout(new BorderLayout());
         setSize(400, 550);
         setLocationRelativeTo(parent);
@@ -47,6 +44,21 @@ public class SignupScreen extends JDialog {
 				dispose();
 			}
 		});
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String role = roleComboBox.getSelectedItem().toString();
+                String firstName = firstNameField.getText();
+                String lastName = lastNameField.getText();
+                String email = emailField.getText();
+                String password = new String(passwordField.getPassword());
+                if (role.equals("Administrator")) {
+                    Admin admin = new Admin(firstName, lastName, email, email, password, true);
+                    manageUsers.addUser(admin);
+                } 
+            }
+        });
 
         panel.add(firstNameLabel, gbc);
         panel.add(firstNameField, gbc);
