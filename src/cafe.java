@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,9 +34,21 @@ public enum cafe {
 	}
 
 	public void addUser(User user) {
-		appendUserToFile(user, "resources/cafeData.txt");
-		loadUsersFromFile("resources/cafeData.txt");
+		users.put(user.getUserName(), user);
+		updateUsersFile();
 	}
+
+	public void updateUser(User user) {
+		users.put(user.getUserName(), user);
+		updateUsersFile();
+	}
+
+	public void deleteUser(String userName) {
+        if (users.containsKey(userName)) {
+            users.remove(userName);
+            updateUsersFile();
+        }
+    }
 
 	private void loadUsersFromFile(String filename) {
 		users.clear();
@@ -78,13 +91,38 @@ public enum cafe {
 		}
 	}
 
-	private void appendUserToFile(User user, String filename) {
-        try (FileWriter fw = new FileWriter(filename, true)) {
-            fw.write(user.toDataString() + "\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	private void updateUsersFile() {
+		String filename = "resources/cafeData.txt";
+		List<String> fileContent = new ArrayList<>();
+		boolean isUserSection = false;
+	
+		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+			String line;
+			while ((line = br.readLine()) != null) {
+				if (line.equals("Users:")) {
+					isUserSection = true;
+				} else if (isUserSection && line.isEmpty()) {
+					isUserSection = false;
+				} else if (!isUserSection) {
+					fileContent.add(line);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
+			for (String line : fileContent) {
+				bw.write(line + "\n");
+			}
+			bw.write("Users:\n");
+			for (User user : users.values()) {
+				bw.write(user.toDataString() + "\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 
 }

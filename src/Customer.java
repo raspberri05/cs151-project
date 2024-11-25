@@ -99,7 +99,7 @@ public class Customer implements User {
 
     @Override
     public String getDetails() {
-        return String.format("Admin;%s;%s;%s;%s;%s;%s;", firstName, lastName, email, userName, password,isActive);
+        return String.format("%s;%s;%s;%s;%s;%s;", firstName, lastName, email, userName, password,isActive);
     }
 
     @Override
