@@ -35,9 +35,11 @@ public enum cafe {
 	public void addUser(User user) {
 		System.out.println(user.getRole());
 		appendUserToFile(user, "resources/cafeData.txt");
+		loadUsersFromFile("resources/cafeData.txt");
 	}
 
 	private void loadUsersFromFile(String filename) {
+		users.clear();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 			String line;
 			boolean isUserSection = false;
