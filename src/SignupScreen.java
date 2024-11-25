@@ -53,8 +53,9 @@ public class SignupScreen extends JDialog {
                 String lastName = lastNameField.getText();
                 String email = emailField.getText();
                 String password = new String(passwordField.getPassword());
+                String username = createUsername(firstName);
                 if (role.equals("Administrator")) {
-                    Admin admin = new Admin(firstName, lastName, email, email, password, true);
+                    Admin admin = new Admin(firstName, lastName, email, username, password, true);
                     manageUsers.addUser(admin);
                 } 
             }
@@ -80,4 +81,9 @@ public class SignupScreen extends JDialog {
 
         add(panel, BorderLayout.CENTER);
 	}
+
+    private String createUsername(String username) {
+        int random = (int) (Math.random() * 9000) + 1000;
+        return username + random;
+    }
 }
