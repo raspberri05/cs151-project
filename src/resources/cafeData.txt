@@ -9,7 +9,6 @@ Pancake;Regular Pancake Breakfast;2002;Regular pancakes served with a choice of 
 Pancake;Blueberry Pancakes;2003;Delicious pancakes studded with fresh blueberries, served with a dusting of powdered sugar and syrup.;8.49;47;true
 Pancake;K&B's Pancake Breakfast;2001;A classic pancake breakfast featuring fluffy pancakes served with butter and syrup.;7.99;49;true
 Users:
-Customer;Cara;White;cara.white@gmail.com;cara7774;Password1!;true;
 Customer;John;Smith;jhonsmith@gmail.com;john6934;Password1!;true;
 Customer;Susan;Gates;susangates@microsoft.com;susan5689;Password1!;true;
 Customer;Ariel;Hall;arihall@gmail.com;ariel2934;Password1!;true;

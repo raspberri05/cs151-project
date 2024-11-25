@@ -82,7 +82,7 @@ public enum cafe {
 			orderedItems.add(tokens[i]);
 		}
 		if (role.equals("Admin")) {
-			Admin admin = new Admin(firstName, lastName, email, userName, password, isActive, orderedItems);
+			Admin admin = new Admin(firstName, lastName, email, userName, password, isActive);
 			users.put(userName, admin);
 		}
 		else {

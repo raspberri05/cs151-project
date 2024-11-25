@@ -1,8 +1,6 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Customer implements User {
-    private static final long serialVersionUID = 1L;
 
     private String firstName;
     private String lastName;
@@ -11,7 +9,6 @@ public class Customer implements User {
     private String password;
     private boolean isActive;
     private List<String> orderedItems;
-    private static final int MAX_ORDER_LIMIT = 10;
 
     public Customer(String firstName, String lastName, String email, String userName, String password, boolean isActive, List<String> orderedItems) {
         this.firstName = firstName;
@@ -64,67 +61,12 @@ public class Customer implements User {
     }
 
     @Override
-    public void orderItems(MenuItem item) throws CustomExceptions.ItemNotAvailableException {
-        if (orderedItems.size() >= MAX_ORDER_LIMIT) {
-            throw new CustomExceptions.ItemNotAvailableException("Order limit reached");
-        }
-        // orderedItems.add(item.getName());
-    }
-
-    @Override
-    public void setActive(boolean active) {
-        this.isActive = active;
-    }
-
-    @Override
-    public void setOrderedItems(List<String> orderedItems) {
-        this.orderedItems = orderedItems;
-    }
-
-    @Override
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    @Override
-    public void cancelItem(MenuItem item) {
-        System.out.println("cancelling");
-    }
-
-
-    @Override
-    public boolean canPlace() {
-        return orderedItems.size() < MAX_ORDER_LIMIT;
-    }
-
-    @Override
-    public String getDetails() {
-        return String.format("%s;%s;%s;%s;%s;%s;", firstName, lastName, email, userName, password,isActive);
-    }
-
-    @Override
     public String toDataString() {
         return String.format("%s;%s;%s;%s;%s;%s;%s;", getRole(), firstName, lastName, email, userName, password, isActive);
     }
 
-
-    public static Customer fromDataString(String data) {
-        String[] tokens = data.split(";");
-        String firstName = tokens[1];
-        String lastName = tokens[2];
-        String email = tokens[3];
-        String userName = tokens[4];
-        String password = tokens[5];
-        boolean isActive = Boolean.parseBoolean(tokens[6]);
-        List<String> orderedItems = new ArrayList<>();
-		for (int i = 7; i < tokens.length; i++) {
-			orderedItems.add(tokens[i]);
-		}
-        return new Customer(firstName, lastName, email, userName, password, isActive, orderedItems);
+    public void setActive(boolean active) {
+        this.isActive = active;
     }
 
-    @Override
-    public int compareTo(User other) {
-        return this.email.compareTo(other.getEmail());
-    }
 }

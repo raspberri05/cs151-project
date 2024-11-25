@@ -56,7 +56,7 @@ public class SignupScreen extends JDialog {
                 String password = new String(passwordField.getPassword());
                 String username = createUsername(firstName);
                 if (role.equals("Admin")) {
-                    Admin admin = new Admin(firstName, lastName, email, username, password, true, new ArrayList<>());
+                    Admin admin = new Admin(firstName, lastName, email, username, password, true);
                     manageUsers.addUser(admin);
                 }
                 else {
