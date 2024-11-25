@@ -58,7 +58,11 @@ public class SignupScreen extends JDialog {
                 if (role.equals("Administrator")) {
                     Admin admin = new Admin(firstName, lastName, email, username, password, true, new ArrayList<>());
                     manageUsers.addUser(admin);
-                } 
+                }
+                else {
+                    Customer customer = new Customer(firstName, lastName, email, username, password, false, new ArrayList<>());
+                    manageUsers.addUser(customer);
+                }
             }
         });
 

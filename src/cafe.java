@@ -72,6 +72,10 @@ public enum cafe {
 			Admin admin = new Admin(firstName, lastName, email, userName, password, isActive, orderedItems);
 			users.put(userName, admin);
 		}
+		else {
+			Customer customer = new Customer(firstName, lastName, email, userName, password, isActive, orderedItems);
+			users.put(userName, customer);
+		}
 	}
 
 	private void appendUserToFile(User user, String filename) {
