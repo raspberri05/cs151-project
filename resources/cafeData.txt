@@ -9,12 +9,12 @@ Pancake;Regular Pancake Breakfast;2002;Regular pancakes served with a choice of 
 Pancake;Blueberry Pancakes;2003;Delicious pancakes studded with fresh blueberries, served with a dusting of powdered sugar and syrup.;8.49;47;true
 Pancake;K&B's Pancake Breakfast;2001;A classic pancake breakfast featuring fluffy pancakes served with butter and syrup.;7.99;49;true
 Users:
-Customer;Nora;Ellis;nora.ellis@yahoo.com;nora6245;Password1!;true;2003
+Customer;Nora;Ellis;nora.ellis@yahoo.com;nora6245;Password1!;true;
 Customer;Cara;White;cara.white@gmail.com;cara7774;Password1!;true;
 Customer;John;Smith;jhonsmith@gmail.com;john6934;Password1!;true;
 Customer;Susan;Gates;susangates@microsoft.com;susan5689;Password1!;true;
 Customer;Ariel;Hall;arihall@gmail.com;ariel2934;Password1!;true;
-Admin;Albert;Tsao;chung-wen.tsao@sjsu.edu;albert2825;Password1!;true;1005
+Admin;Albert;Tsao;chung-wen.tsao@sjsu.edu;albert2825;Password1!;true;
 Customer;Zev;Kirby;zkirby114@hotmail.com;zev4941;Password1!;false;
 Customer;Emery;Smith;emsmith@hotmail.com;emery7745;Password1!;true;
 Customer;Landyn;McKay;lanmckay@gmail.com;landyn9067;Password1!;true;
@@ -26,6 +26,7 @@ Customer;Victor;Daniel;vicdan@yahoo.com;victor2399;Password1!;true;
 Customer;Fox;Alfaro;foxalfaro@gmail.com;fox5792;Password1!;false;
 Customer;Angie;Banks;angiebanks@yahoo.com;angie0186;Password1!;true;
 Customer;Aisha;Lucas;aishlucas@hotmail.com;aisha7757;Password1!;true;
+Admin;naya;singhania;naya.singhania@gmail.com;naya0000;password;true;
 Admin;Veda;Bandi;vedasahithi.bandi@sjsu.edu;veda8338;Password1!;true;
 Customer;Jane;Doe;janedoe@gmail.com;jane8136;Password1!;true;
 Customer;Cleo;Higgins;cleohiggins@gmail.com;cleo1979;Password1!;true;

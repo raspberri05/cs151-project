@@ -178,6 +178,9 @@ public enum cafe {
 		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 			String line;
 			while ((line = br.readLine()) != null) {
+				if (line.equals("Users:")) {
+					isMenuSection = false;
+				}
 				if (line.equals("Menu:")) {
 					isMenuSection = true;
 				} else if (isMenuSection && line.isEmpty()) {
