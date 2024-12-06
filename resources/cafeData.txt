@@ -8,7 +8,6 @@ Diner;Pasta;1006;Classic pasta with a choice of marinara or Alfredo sauce.;10.99
 Pancake;Regular Pancake Breakfast;2002;Regular pancakes served with a choice of butter, syrup, or fruit topping.;4.99;30;true;
 Pancake;Blueberry Pancakes;2003;Delicious pancakes studded with fresh blueberries, served with a dusting of powdered sugar and syrup.;8.49;47;true;
 Pancake;K&B's Pancake Breakfast;2001;A classic pancake breakfast featuring fluffy pancakes served with butter and syrup.;7.99;49;true;
-Pancake;joip;2764;joi;0.0;1;true;
 Users:
 Customer;Nora;Ellis;nora.ellis@yahoo.com;nora6245;Password1!;true;
 Customer;Cara;White;cara.white@gmail.com;cara7774;Password1!;true;
