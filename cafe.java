@@ -172,21 +172,28 @@ public enum cafe {
 
 	private void updateMenuFile() {
 		String filename = "resources/cafeData.txt";
-		List<String> fileContent = new ArrayList<>();
+		List<String> menuContent = new ArrayList<>();
+		List<String> userContent = new ArrayList<>();
 		boolean isMenuSection = false;
+		boolean isUserSection = false;
 	
 		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 			String line;
 			while ((line = br.readLine()) != null) {
-				if (line.equals("Users:")) {
-					isMenuSection = false;
-				}
 				if (line.equals("Menu:")) {
 					isMenuSection = true;
-				} else if (isMenuSection && line.isEmpty()) {
+					isUserSection = false;
+					continue;
+				} else if (line.equals("Users:")) {
 					isMenuSection = false;
-				} else if (!isMenuSection) {
-					fileContent.add(line);
+					isUserSection = true;
+					continue;
+				}
+	
+				if (isMenuSection) {
+					menuContent.add(line);
+				} else if (isUserSection) {
+					userContent.add(line);
 				}
 			}
 		} catch (IOException e) {
@@ -194,12 +201,13 @@ public enum cafe {
 		}
 	
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
-			for (String line : fileContent) {
-				bw.write(line + "\n");
-			}
 			bw.write("Menu:\n");
 			for (MenuItem item : menu) {
 				bw.write(item.toDataString() + "\n");
+			}
+			bw.write("Users:\n");
+			for (String line : userContent) {
+				bw.write(line + "\n");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

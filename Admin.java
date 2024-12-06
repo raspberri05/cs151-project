@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Admin implements User {	
-	private String firstName;
+public class Admin implements User {
+    private String firstName;
     private String lastName;
     private String email;
     private String userName;
@@ -52,7 +52,8 @@ public class Admin implements User {
 
     @Override
     public String toDataString() {
-        return String.format("%s;%s;%s;%s;%s;%s;%s;", getRole(), firstName, lastName, email, userName, password, isActive);
+        return String.format("%s;%s;%s;%s;%s;%s;%s;", getRole(), firstName, lastName, email, userName, password,
+                isActive);
     }
 
     public void setActive(boolean active) {
