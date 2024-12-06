@@ -51,6 +51,12 @@ public class UserManagerScreen extends JFrame {
             }
         });
 
+        addButton.addActionListener(e -> {
+            AdminUserSignupScreen signupScreen = new AdminUserSignupScreen(this);
+            signupScreen.setVisible(true);
+            updateListModel(userManager, listModel);
+        });
+
         buttonPanel.add(addButton);
         buttonPanel.add(editButton);
         buttonPanel.add(toggleButton);
