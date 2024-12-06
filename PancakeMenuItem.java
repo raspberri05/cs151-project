@@ -5,16 +5,14 @@ public class PancakeMenuItem implements MenuItem {
     private String description;
     private float price;
     private int count;
-    private boolean available;
     private boolean current;
 
-    public PancakeMenuItem(String title, String itemID, String description, float price, int count, boolean available, boolean current) {
+    public PancakeMenuItem(String title, String itemID, String description, float price, int count, boolean current) {
         this.title = title;
         this.itemID = itemID;
         this.description = description;
         this.price = price;
         this.count = count;
-        this.available = available;
         this.current = current;
     }
 
@@ -39,15 +37,19 @@ public class PancakeMenuItem implements MenuItem {
     }
 
     public boolean isAvailable() {
-        return available;
+        return count > 0;
     }
 
     public String getMenuType() {
         return "Pancake";
     }
 
+    public boolean isActive() {
+        return current;
+    }
+
+    @Override
     public String toDataString() {
-        return String.format("Title: %s, ItemID: %s, Description: %s, Price: %.2f, Count: %d, Available: %b, Current: %b",
-                title, itemID, description, price, count, available, current);
+        return String.format("%s;%s;%s;%s;%s;%s;%s;", getMenuType(), title, itemID, description, price, count, current);
     }
 }

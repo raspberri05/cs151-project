@@ -11,7 +11,7 @@ import java.util.Map;
 public enum cafe {
 	DB;
 
-	private List<MenuItem> menu;
+	private  ArrayList<MenuItem> menu;
 	private Map<String, User> users;
 
 	private cafe() {
@@ -29,7 +29,7 @@ public enum cafe {
         return users;
     }
 
-	public List<MenuItem> getMenu() {
+	public  ArrayList<MenuItem> getMenu() {
 		return menu;
 	}
 
@@ -80,6 +80,9 @@ public enum cafe {
 			boolean isMenuSection = false;
 
 			while ((line = br.readLine()) != null) {
+				if (line.equals("Users:")) {
+					isMenuSection = false;
+				} else
 				if (line.equals("Menu:")) {
 					isMenuSection = true;
 				} else if (isMenuSection && !line.isEmpty()) {
@@ -122,13 +125,13 @@ public enum cafe {
 		String description = tokens[3];
 		float price = Float.parseFloat(tokens[4]);
 		int count = Integer.parseInt(tokens[5]);
-		boolean isAvailable = Boolean.parseBoolean(tokens[6]);
+		boolean isCurrent = Boolean.parseBoolean(tokens[6]);
 		if (menuType.equals("Diner")) {
-			DinerMenuItem diner = new DinerMenuItem(title, itemID, description, price, count, isAvailable, false);
+			DinerMenuItem diner = new DinerMenuItem(title, itemID, description, price, count, isCurrent);
 			menu.add(diner);
 		}
 		else {
-			PancakeMenuItem pancake = new PancakeMenuItem(title, itemID, description, price, count, isAvailable, false);
+			PancakeMenuItem pancake = new PancakeMenuItem(title, itemID, description, price, count, isCurrent);
 			menu.add(pancake);
 		}
 

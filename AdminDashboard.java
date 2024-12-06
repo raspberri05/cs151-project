@@ -25,6 +25,11 @@ public class AdminDashboard extends JFrame {
             userScreen.setVisible(true);
         });
 
+        manageMenuButton.addActionListener(e -> {
+            MenuManagerScreen menuScreen = new MenuManagerScreen(this);
+            menuScreen.setVisible(true);
+        });
+
         panel.add(firstNameLabel, gbc);
         panel.add(manageCustomersButton, gbc);
         panel.add(manageMenuButton, gbc);

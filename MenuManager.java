@@ -1,8 +1,8 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class MenuManager {
     private cafe DB;
-	private List<MenuItem> menu;
+	private ArrayList<MenuItem> menu;
 
     public MenuManager() {
         DB = cafe.getInstance();
@@ -12,7 +12,7 @@ public class MenuManager {
     public void addMenuItem(MenuItem item) {
         DB.addMenuItem(item);
     }
-    public List<MenuItem> getMenu() {
+    public  ArrayList<MenuItem> getMenu() {
         return DB.getMenu();
     }
 }

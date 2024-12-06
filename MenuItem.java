@@ -7,6 +7,6 @@ public interface MenuItem {
     boolean isAvailable();
     String toDataString();    
     String getMenuType();
-    
+    boolean isActive();
 }
 	
