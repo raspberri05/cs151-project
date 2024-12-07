@@ -55,6 +55,16 @@ public enum cafe {
         }
     }
 
+	public void deleteMenuItem(String itemID) {
+		for (MenuItem item : menu) {
+			if (item.getItemID().equals(itemID)) {
+				menu.remove(item);
+				updateMenuFile();
+				break;
+			}
+		}
+	}
+
 	private void loadUsersFromFile(String filename) {
 		users.clear();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {

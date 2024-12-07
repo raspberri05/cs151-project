@@ -49,6 +49,42 @@ public class MenuManagerScreen extends JFrame {
 
         menuList.addMouseListener(mouseListener);
 
+        deleteButton.addActionListener(e -> {
+            String selectedItem = menuList.getSelectedValue();
+            if (selectedItem != null) {
+                JDialog confirmDialog = new JDialog(this, "Confirm Deletion", true);
+                confirmDialog.setLayout(new BorderLayout());
+                confirmDialog.setLocationRelativeTo(this);
+
+                JLabel confirmLabel = new JLabel("Do you want to delete this Menu Item?");
+                confirmLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                confirmDialog.add(confirmLabel, BorderLayout.CENTER);
+
+                JPanel dialogButtonPanel = new JPanel();
+                dialogButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+                JButton confirmButton = new JButton("Yes");
+                JButton cancelButton = new JButton("No");
+
+                dialogButtonPanel.add(confirmButton);
+                dialogButtonPanel.add(cancelButton);
+                confirmDialog.add(dialogButtonPanel, BorderLayout.SOUTH);
+
+                confirmButton.addActionListener(event -> {
+                    String itemID = getItemID(selectedItem);
+                    menuManager.deleteMenuItem(itemID);
+                    listModel.removeElement(selectedItem);
+                    confirmDialog.dispose();
+                });
+
+                cancelButton.addActionListener(event -> confirmDialog.dispose());
+
+                confirmDialog.setSize(400, 200);
+                confirmDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                confirmDialog.setVisible(true);
+            }
+        });
+
         addButton.addActionListener(e -> {
             AdminNewItemScreen newItemScreen = new AdminNewItemScreen(this);
             newItemScreen.setVisible(true);

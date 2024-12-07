@@ -22,6 +22,10 @@ public class MenuManager {
         DB.addMenuItem(item);
     }
 
+    public void deleteMenuItem(String itemID) {
+        DB.deleteMenuItem(itemID);
+    }
+
     public  ArrayList<MenuItem> getMenu() {
         return DB.getMenu();
     }
