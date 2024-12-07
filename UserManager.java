@@ -23,6 +23,11 @@ public class UserManager {
 
 	}
 
+	public String getUserInfo(String userName) {
+		User user = users.get(userName);
+		return "Name: " + user.getFirstName() + " " + user.getLastName() + "\nUsername: " + user.getUserName() + "\nEmail: " + user.getEmail() + "\nActive: " + (user.isActive() ? "Yes" : "No") + "\nPassword: " + user.getPassword() + "\nOrdered Items: " + user.getOrderedItems();
+	}
+
 	public User login(String username, String password) {
 		User user = users.get(username);
 		if (user != null && user.getPassword().equals(password)) {

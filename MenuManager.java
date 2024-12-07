@@ -9,9 +9,19 @@ public class MenuManager {
         menu = DB.getMenu();
     }
 
+    public String getMenuInfo(String itemID) {
+        for (MenuItem m : menu) {
+            if (m.getItemID().equals(itemID)) {
+                return "Name: " + m.getTitle() + "\nPrice: " + m.getPrice() + "\nCount: " + m.getCount() + "\nActive: " + (m.isActive() ? "Yes" : "No");
+            }
+        }
+        return null;
+    }
+
     public void addMenuItem(MenuItem item) {
         DB.addMenuItem(item);
     }
+
     public  ArrayList<MenuItem> getMenu() {
         return DB.getMenu();
     }

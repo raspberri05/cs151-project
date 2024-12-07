@@ -1,6 +1,9 @@
 import java.awt.*;
 import java.util.Map;
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class UserManagerScreen extends JFrame {
 
@@ -30,13 +33,55 @@ public class UserManagerScreen extends JFrame {
         JButton toggleButton = new JButton("Toggle Activation");
         JButton deleteButton = new JButton("Delete");
 
+        MouseListener mouseListener = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    String selectedUser = userList.getSelectedValue();
+                    if (selectedUser != null) {
+                        String username = getUsername(selectedUser);
+                        JOptionPane.showMessageDialog(null, userManager.getUserInfo(username), "User Info",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }
+        };
+
+        userList.addMouseListener(mouseListener);
+
         deleteButton.addActionListener(e -> {
             String selectedUser = userList.getSelectedValue();
             if (selectedUser != null) {
-                String[] userParts = selectedUser.split(":");
-                String userName = userParts[0].split(",")[0].trim();
-                userManager.deleteUser(userName);
-                listModel.removeElement(selectedUser);
+                JDialog confirmDialog = new JDialog(this, "Confirm Deletion", true);
+                confirmDialog.setLayout(new BorderLayout());
+                confirmDialog.setLocationRelativeTo(this);
+
+                JLabel confirmLabel = new JLabel("Do you want to delete this user?");
+                confirmLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                confirmDialog.add(confirmLabel, BorderLayout.CENTER);
+
+                JPanel dialogButtonPanel = new JPanel();
+                dialogButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+                JButton confirmButton = new JButton("Yes");
+                JButton cancelButton = new JButton("No");
+
+                dialogButtonPanel.add(confirmButton);
+                dialogButtonPanel.add(cancelButton);
+                confirmDialog.add(dialogButtonPanel, BorderLayout.SOUTH);
+
+                confirmButton.addActionListener(event -> {
+                    String userName = getUsername(selectedUser);
+                    userManager.deleteUser(userName);
+                    listModel.removeElement(selectedUser);
+                    confirmDialog.dispose();
+                });
+
+                cancelButton.addActionListener(event -> confirmDialog.dispose());
+
+                confirmDialog.setSize(400, 200);
+                confirmDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                confirmDialog.setVisible(true);
             }
         });
 
@@ -67,12 +112,20 @@ public class UserManagerScreen extends JFrame {
         add(panel, BorderLayout.CENTER);
     }
 
+    private String getUsername(String selectedUser) {
+        String[] userParts = selectedUser.split(":");
+        String userName = userParts[0].split(",")[0].trim();
+        return userName;
+    }
+
     private void updateListModel(UserManager userManager, DefaultListModel<String> listModel) {
+
         customers = userManager.getUsers();
         listModel.clear();
         for (User u : customers.values()) {
             if (u instanceof Customer) {
-                listModel.addElement(u.getUserName() + ", " + u.getLastName() + ", " + u.getFirstName() + ": " + (u.isActive() ? "Active" : "Inactive"));
+                listModel.addElement(u.getUserName() + ", " + u.getLastName() + ", " + u.getFirstName() + ": "
+                        + (u.isActive() ? "Active" : "Inactive"));
             }
         }
     }

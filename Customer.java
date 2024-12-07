@@ -10,7 +10,8 @@ public class Customer implements User {
     private boolean isActive;
     private List<String> orderedItems;
 
-    public Customer(String firstName, String lastName, String email, String userName, String password, boolean isActive, List<String> orderedItems) {
+    public Customer(String firstName, String lastName, String email, String userName, String password, boolean isActive,
+            List<String> orderedItems) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -19,7 +20,7 @@ public class Customer implements User {
         this.isActive = isActive;
         this.orderedItems = orderedItems;
     }
-	
+
     @Override
     public String getFirstName() {
         return firstName;
@@ -62,7 +63,8 @@ public class Customer implements User {
 
     @Override
     public String toDataString() {
-        return String.format("%s;%s;%s;%s;%s;%s;%s;", getRole(), firstName, lastName, email, userName, password, isActive);
+        return String.format("%s;%s;%s;%s;%s;%s;%s;", getRole(), firstName, lastName, email, userName, password,
+                isActive);
     }
 
     public void setActive(boolean active) {
