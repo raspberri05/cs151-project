@@ -48,6 +48,16 @@ public enum cafe {
 		updateUsersFile();
 	}
 
+	public void updateMenuItem(MenuItem item) {
+		for (MenuItem menuItem : menu) {
+			if (menuItem.getItemID().equals(item.getItemID())) {
+				menuItem = item;
+				updateMenuFile();
+				break;
+			}
+		}
+	}
+
 	public void deleteUser(String userName) {
         if (users.containsKey(userName)) {
             users.remove(userName);

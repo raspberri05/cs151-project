@@ -6,8 +6,11 @@ import java.util.ArrayList;
 
 
 public class AdminUserSignupScreen extends JDialog {
+    public interface UserListener {
+        void userAdded();
+    }
 
-	public AdminUserSignupScreen(JFrame parent) {
+	public AdminUserSignupScreen(JFrame parent, UserListener listener) {
 		super(parent, "Sign Up", true);
         UserManager manageUsers = new UserManager();
         setLayout(new BorderLayout());
@@ -57,7 +60,7 @@ public class AdminUserSignupScreen extends JDialog {
                 String email = emailField.getText();
                 String password = new String(passwordField.getPassword());
                 String username = createUsername(firstName);
-                boolean isActive = activeCheckBox.isSelected(); // Retrieve the checkbox value
+                boolean isActive = activeCheckBox.isSelected();
                 if (role.equals("Admin")) {
                     Admin admin = new Admin(firstName, lastName, email, username, password, isActive);
                     manageUsers.addUser(admin);
@@ -67,6 +70,7 @@ public class AdminUserSignupScreen extends JDialog {
                     manageUsers.addUser(customer);
                 }
                 JOptionPane.showMessageDialog(null, "This User's username is " + username, "User Added Successfully!", JOptionPane.INFORMATION_MESSAGE);
+                listener.userAdded();
                 dispose();
             }
         });

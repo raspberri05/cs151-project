@@ -5,9 +5,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MenuManagerScreen extends JFrame {
+public class MenuManagerScreen extends JFrame implements AdminNewItemScreen.ItemListener, AdminEditItemScreen.ItemListener {
 
 	private  ArrayList<MenuItem> menu;
+    private DefaultListModel<String> listModel; // Declare listModel as an instance variable
+
 
     public MenuManagerScreen(JFrame parent) {
         super("Manage Menu Items");
@@ -18,7 +20,7 @@ public class MenuManagerScreen extends JFrame {
         MenuManager menuManager = new MenuManager();
         menu = menuManager.getMenu();
 
-        DefaultListModel<String> listModel = new DefaultListModel<>();
+        listModel = new DefaultListModel<>();
         updateListModel(menuManager, listModel);
 
         JList<String> menuList = new JList<>(listModel);
@@ -48,6 +50,17 @@ public class MenuManagerScreen extends JFrame {
         };
 
         menuList.addMouseListener(mouseListener);
+
+        editButton.addActionListener(e -> {
+            String selectedItem = menuList.getSelectedValue();
+            if (selectedItem != null) {
+                String itemID = getItemID(selectedItem);
+                MenuItem item = menuManager.getMenuObject(itemID);
+                AdminEditItemScreen editItemScreen = new AdminEditItemScreen(this, item, this);
+                editItemScreen.setVisible(true);
+                updateListModel(menuManager, listModel);
+            }
+        });
 
         deleteButton.addActionListener(e -> {
             String selectedItem = menuList.getSelectedValue();
@@ -86,9 +99,18 @@ public class MenuManagerScreen extends JFrame {
         });
 
         addButton.addActionListener(e -> {
-            AdminNewItemScreen newItemScreen = new AdminNewItemScreen(this);
+            AdminNewItemScreen newItemScreen = new AdminNewItemScreen(this,this);
             newItemScreen.setVisible(true);
             updateListModel(menuManager, listModel);
+        });
+
+        toggleButton.addActionListener(e -> {
+            String selectedItem = menuList.getSelectedValue();
+            if (selectedItem != null) {
+                String itemID = getItemID(selectedItem);
+                menuManager.toggleActivation(itemID);
+                updateListModel(menuManager, listModel);
+            }
         });
 
         buttonPanel.add(addButton);
@@ -105,9 +127,22 @@ public class MenuManagerScreen extends JFrame {
         return item.split(":")[0].trim();
     }
 
+    @Override
+    public void itemAdded() {
+        MenuManager menuManager = new MenuManager();
+        updateListModel(menuManager, listModel);
+    }
+
+    @Override 
+    public void itemEdited() {
+        MenuManager menuManager = new MenuManager();
+        updateListModel(menuManager, listModel);
+    }
+
     private void updateListModel(MenuManager menuManager, DefaultListModel<String> listModel) {
-        listModel.clear();
         menu = menuManager.getMenu();
+        System.out.println("hello");
+        listModel.clear();
         for (MenuItem item : menu) {
             listModel.addElement(item.getItemID() + ": " + item.getTitle() + ", " + item.getPrice() + ", " + (item.isActive() ? "Active" : "Inactive"));
         }

@@ -3,14 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AdminNewItemScreen extends JFrame {
-
+public class AdminEditItemScreen extends JFrame {
     public interface ItemListener {
-        void itemAdded();
+        void itemEdited();
     }
 
-    public AdminNewItemScreen(JFrame parent, ItemListener listener) {
-        super("Create Menu Item");
+
+    public AdminEditItemScreen(JFrame parent, MenuItem item, ItemListener listener) {
+        super("Edit Menu Item");
         MenuManager manageMenu = new MenuManager();
         setLayout(new BorderLayout());
         setSize(600, 700);
@@ -40,8 +40,15 @@ public class AdminNewItemScreen extends JFrame {
         JCheckBox activeCheckBox = new JCheckBox("Active");
 
         
-        JButton submitButton = new JButton("Add Menu Item");
+        JButton submitButton = new JButton("Save");
         JButton cancelButton = new JButton("Cancel");
+
+        titleField.setText(item.getTitle());
+        descriptionField.setText(item.getDescription());
+        priceField.setText(Float.toString(item.getPrice()));
+        countField.setText(Integer.toString(item.getCount()));
+        typeComboBox.setSelectedItem(item.getMenuType());
+        activeCheckBox.setSelected(item.isActive());
 
         
 		cancelButton.addActionListener(new ActionListener() {
@@ -59,22 +66,23 @@ public class AdminNewItemScreen extends JFrame {
                 String description = descriptionField.getText();
                 float price = Float.parseFloat(priceField.getText());
                 int count = Integer.parseInt(countField.getText());
-                String itemID = createItemID();
+                String itemID = item.getItemID();
                 boolean isActive = activeCheckBox.isSelected();
                 if (type.equals("Diner")) {
                     DinerMenuItem diner = new DinerMenuItem(title, itemID, description, price, count, isActive);
+                    manageMenu.deleteMenuItem(itemID);
                     manageMenu.addMenuItem(diner);
                 }
                 else {
                     PancakeMenuItem pancake = new PancakeMenuItem(title, itemID, description, price, count, isActive);
+                    manageMenu.deleteMenuItem(itemID);
                     manageMenu.addMenuItem(pancake);
                 }
-
-                JOptionPane.showMessageDialog(null, "This Item's ID is " + itemID, "Item Added Successfully!", JOptionPane.INFORMATION_MESSAGE);
-                listener.itemAdded();
+                listener.itemEdited();
                 dispose();
             }
         });
+
         panel.add(titleLabel, gbc);
         panel.add(titleField, gbc);
         panel.add(descriptionLabel, gbc);
@@ -94,12 +102,5 @@ public class AdminNewItemScreen extends JFrame {
         panel.add(buttonPanel, gbc);
 
         add(panel, BorderLayout.CENTER);
-
     }
-
-    private String createItemID() {
-        int random = (int) (Math.random() * 9000) + 1000;
-        return String.valueOf(random);
-    }
-    
 }

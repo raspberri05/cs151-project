@@ -5,9 +5,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class UserManagerScreen extends JFrame {
+public class UserManagerScreen extends JFrame implements AdminUserSignupScreen.UserListener, AdminUserEditScreen.UserListener {
 
     private Map<String, User> customers;
+    private DefaultListModel<String> listModel; // Declare listModel as an instance variable
 
     public UserManagerScreen(JFrame parent) {
         super("Manage Users");
@@ -20,7 +21,7 @@ public class UserManagerScreen extends JFrame {
 
         JPanel panel = new JPanel(new BorderLayout());
 
-        DefaultListModel<String> listModel = new DefaultListModel<>();
+        listModel = new DefaultListModel<>();
         updateListModel(userManager, listModel);
 
         JList<String> userList = new JList<>(listModel);
@@ -48,6 +49,16 @@ public class UserManagerScreen extends JFrame {
         };
 
         userList.addMouseListener(mouseListener);
+
+        editButton.addActionListener(e -> {
+            String selectedUser = userList.getSelectedValue();
+            if (selectedUser != null) {
+                String userName = getUsername(selectedUser);
+                User user = customers.get(userName);
+                AdminUserEditScreen editScreen = new AdminUserEditScreen(this, user, this);
+                editScreen.setVisible(true);
+            }
+        });
 
         deleteButton.addActionListener(e -> {
             String selectedUser = userList.getSelectedValue();
@@ -97,7 +108,7 @@ public class UserManagerScreen extends JFrame {
         });
 
         addButton.addActionListener(e -> {
-            AdminUserSignupScreen signupScreen = new AdminUserSignupScreen(this);
+            AdminUserSignupScreen signupScreen = new AdminUserSignupScreen(this,this);
             signupScreen.setVisible(true);
             updateListModel(userManager, listModel);
         });
@@ -110,6 +121,18 @@ public class UserManagerScreen extends JFrame {
         panel.add(buttonPanel, BorderLayout.SOUTH);
 
         add(panel, BorderLayout.CENTER);
+    }
+
+    @Override
+    public void userAdded() {
+        UserManager userManager = new UserManager();
+        updateListModel(userManager, listModel);
+    }
+
+    @Override
+    public void userEdited() {
+        UserManager userManager = new UserManager();
+        updateListModel(userManager, listModel);
     }
 
     private String getUsername(String selectedUser) {

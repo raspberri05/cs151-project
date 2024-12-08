@@ -48,6 +48,10 @@ public class PancakeMenuItem implements MenuItem {
         return current;
     }
 
+    public void setActive(boolean active) {
+        current = active;
+    }
+
     @Override
     public String toDataString() {
         return String.format("%s;%s;%s;%s;%s;%s;%s;", getMenuType(), title, itemID, description, price, count, current);

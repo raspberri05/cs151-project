@@ -8,5 +8,6 @@ public interface MenuItem {
     String toDataString();    
     String getMenuType();
     boolean isActive();
+    void setActive(boolean active);
 }
 	

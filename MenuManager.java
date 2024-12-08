@@ -1,3 +1,4 @@
+import java.awt.Menu;
 import java.util.ArrayList;
 
 public class MenuManager {
@@ -28,5 +29,20 @@ public class MenuManager {
 
     public  ArrayList<MenuItem> getMenu() {
         return DB.getMenu();
+    }
+
+    public MenuItem getMenuObject(String itemID) {
+        for (MenuItem m : menu) {
+            if (m.getItemID().equals(itemID)) {
+                return m;
+            }
+        }
+        return null;
+    }
+
+    public void toggleActivation(String itemID) {
+        MenuItem existing = getMenuObject(itemID);
+        existing.setActive(!existing.isActive());
+        DB.updateMenuItem(existing);
     }
 }
