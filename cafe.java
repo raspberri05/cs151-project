@@ -11,7 +11,7 @@ import java.util.Map;
 public enum cafe {
 	DB;
 
-	private  ArrayList<MenuItem> menu;
+	private ArrayList<MenuItem> menu;
 	private Map<String, User> users;
 
 	private cafe() {
@@ -22,14 +22,14 @@ public enum cafe {
 	}
 
 	public static cafe getInstance() {
-        return DB;
-    }
+		return DB;
+	}
 
-    public Map<String, User> getUsers() {
-        return users;
-    }
+	public Map<String, User> getUsers() {
+		return users;
+	}
 
-	public  ArrayList<MenuItem> getMenu() {
+	public ArrayList<MenuItem> getMenu() {
 		return menu;
 	}
 
@@ -59,11 +59,11 @@ public enum cafe {
 	}
 
 	public void deleteUser(String userName) {
-        if (users.containsKey(userName)) {
-            users.remove(userName);
-            updateUsersFile();
-        }
-    }
+		if (users.containsKey(userName)) {
+			users.remove(userName);
+			updateUsersFile();
+		}
+	}
 
 	public void deleteMenuItem(String itemID) {
 		for (MenuItem item : menu) {
@@ -77,21 +77,21 @@ public enum cafe {
 
 	private void loadUsersFromFile(String filename) {
 		users.clear();
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 			String line;
 			boolean isUserSection = false;
 
 			while ((line = br.readLine()) != null) {
-			    if (line.equals("Users:")) {
-			        isUserSection = true;
-			    } else if (isUserSection && !line.isEmpty()) {
+				if (line.equals("Users:")) {
+					isUserSection = true;
+				} else if (isUserSection && !line.isEmpty()) {
 					parseUsers(line);
 				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    }
+	}
 
 	private void loadMenuFromFile(String filename) {
 		menu.clear();
@@ -102,8 +102,7 @@ public enum cafe {
 			while ((line = br.readLine()) != null) {
 				if (line.equals("Users:")) {
 					isMenuSection = false;
-				} else
-				if (line.equals("Menu:")) {
+				} else if (line.equals("Menu:")) {
 					isMenuSection = true;
 				} else if (isMenuSection && !line.isEmpty()) {
 					parseMenuItem(line);
@@ -130,8 +129,7 @@ public enum cafe {
 		if (role.equals("Admin")) {
 			Admin admin = new Admin(firstName, lastName, email, userName, password, isActive);
 			users.put(userName, admin);
-		}
-		else {
+		} else {
 			Customer customer = new Customer(firstName, lastName, email, userName, password, isActive, orderedItems);
 			users.put(userName, customer);
 		}
@@ -149,8 +147,7 @@ public enum cafe {
 		if (menuType.equals("Diner")) {
 			DinerMenuItem diner = new DinerMenuItem(title, itemID, description, price, count, isCurrent);
 			menu.add(diner);
-		}
-		else {
+		} else {
 			PancakeMenuItem pancake = new PancakeMenuItem(title, itemID, description, price, count, isCurrent);
 			menu.add(pancake);
 		}
@@ -161,7 +158,7 @@ public enum cafe {
 		String filename = "resources/cafeData.txt";
 		List<String> fileContent = new ArrayList<>();
 		boolean isUserSection = false;
-	
+
 		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 			String line;
 			while ((line = br.readLine()) != null) {
@@ -176,7 +173,7 @@ public enum cafe {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	
+
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
 			for (String line : fileContent) {
 				bw.write(line + "\n");
@@ -196,7 +193,7 @@ public enum cafe {
 		List<String> userContent = new ArrayList<>();
 		boolean isMenuSection = false;
 		boolean isUserSection = false;
-	
+
 		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 			String line;
 			while ((line = br.readLine()) != null) {
@@ -209,7 +206,7 @@ public enum cafe {
 					isUserSection = true;
 					continue;
 				}
-	
+
 				if (isMenuSection) {
 					menuContent.add(line);
 				} else if (isUserSection) {
@@ -219,7 +216,7 @@ public enum cafe {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	
+
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
 			bw.write("Menu:\n");
 			for (MenuItem item : menu) {
@@ -233,6 +230,5 @@ public enum cafe {
 			e.printStackTrace();
 		}
 	}
-
 
 }

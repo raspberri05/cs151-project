@@ -34,7 +34,7 @@ public class AdminUserEditScreen extends JFrame {
         JTextField emailField = new JTextField(20);
         JTextField passwordField = new JTextField(20);
 
-        String[] roles = {"Customer", "Admin"};
+        String[] roles = { "Customer", "Admin" };
         JComboBox<String> roleComboBox = new JComboBox<>(roles);
         roleComboBox.setPreferredSize(new Dimension(firstNameField.getPreferredSize()));
 
@@ -51,11 +51,11 @@ public class AdminUserEditScreen extends JFrame {
         activeCheckBox.setSelected(user.isActive());
 
         cancelButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -71,13 +71,14 @@ public class AdminUserEditScreen extends JFrame {
                     Admin admin = new Admin(firstName, lastName, email, username, password, isActive);
                     manageUsers.deleteUser(username);
                     manageUsers.addUser(admin);
-                }
-                else {
-                    Customer customer = new Customer(firstName, lastName, email, username, password, isActive, new ArrayList<>());
+                } else {
+                    Customer customer = new Customer(firstName, lastName, email, username, password, isActive,
+                            new ArrayList<>());
                     manageUsers.deleteUser(username);
                     manageUsers.addUser(customer);
                 }
-                JOptionPane.showMessageDialog(null, "This User's username is " + username, "User Edited Successfully!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "This User's username is " + username, "User Edited Successfully!",
+                        JOptionPane.INFORMATION_MESSAGE);
                 listener.userEdited();
                 dispose();
             }
@@ -94,7 +95,6 @@ public class AdminUserEditScreen extends JFrame {
         panel.add(roleLabel, gbc);
         panel.add(roleComboBox, gbc);
         panel.add(activeCheckBox, gbc);
-
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
         buttonPanel.add(submitButton);

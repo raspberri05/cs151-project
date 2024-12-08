@@ -36,6 +36,5 @@ public class AdminDashboard extends JFrame {
 
         add(panel, BorderLayout.CENTER);
 
-
-	}
+    }
 }

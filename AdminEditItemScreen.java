@@ -8,7 +8,6 @@ public class AdminEditItemScreen extends JFrame {
         void itemEdited();
     }
 
-
     public AdminEditItemScreen(JFrame parent, MenuItem item, ItemListener listener) {
         super("Edit Menu Item");
         MenuManager manageMenu = new MenuManager();
@@ -33,13 +32,12 @@ public class AdminEditItemScreen extends JFrame {
         JTextField priceField = new JTextField(20);
         JTextField countField = new JTextField(20);
 
-        String[] types = {"Pancake", "Diner"};
+        String[] types = { "Pancake", "Diner" };
         JComboBox<String> typeComboBox = new JComboBox<>(types);
         typeComboBox.setPreferredSize(new Dimension(titleField.getPreferredSize()));
 
         JCheckBox activeCheckBox = new JCheckBox("Active");
 
-        
         JButton submitButton = new JButton("Save");
         JButton cancelButton = new JButton("Cancel");
 
@@ -50,13 +48,12 @@ public class AdminEditItemScreen extends JFrame {
         typeComboBox.setSelectedItem(item.getMenuType());
         activeCheckBox.setSelected(item.isActive());
 
-        
-		cancelButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -72,8 +69,7 @@ public class AdminEditItemScreen extends JFrame {
                     DinerMenuItem diner = new DinerMenuItem(title, itemID, description, price, count, isActive);
                     manageMenu.deleteMenuItem(itemID);
                     manageMenu.addMenuItem(diner);
-                }
-                else {
+                } else {
                     PancakeMenuItem pancake = new PancakeMenuItem(title, itemID, description, price, count, isActive);
                     manageMenu.deleteMenuItem(itemID);
                     manageMenu.addMenuItem(pancake);

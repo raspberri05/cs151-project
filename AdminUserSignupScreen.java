@@ -4,14 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-
 public class AdminUserSignupScreen extends JDialog {
     public interface UserListener {
         void userAdded();
     }
 
-	public AdminUserSignupScreen(JFrame parent, UserListener listener) {
-		super(parent, "Sign Up", true);
+    public AdminUserSignupScreen(JFrame parent, UserListener listener) {
+        super(parent, "Sign Up", true);
         UserManager manageUsers = new UserManager();
         setLayout(new BorderLayout());
         setSize(600, 700);
@@ -35,7 +34,7 @@ public class AdminUserSignupScreen extends JDialog {
         JTextField emailField = new JTextField(20);
         JPasswordField passwordField = new JPasswordField(20);
 
-        String[] roles = {"Customer", "Admin"};
+        String[] roles = { "Customer", "Admin" };
         JComboBox<String> roleComboBox = new JComboBox<>(roles);
         roleComboBox.setPreferredSize(new Dimension(firstNameField.getPreferredSize()));
 
@@ -44,12 +43,12 @@ public class AdminUserSignupScreen extends JDialog {
         JButton submitButton = new JButton("Add User");
         JButton cancelButton = new JButton("Cancel");
 
-		cancelButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -64,12 +63,13 @@ public class AdminUserSignupScreen extends JDialog {
                 if (role.equals("Admin")) {
                     Admin admin = new Admin(firstName, lastName, email, username, password, isActive);
                     manageUsers.addUser(admin);
-                }
-                else {
-                    Customer customer = new Customer(firstName, lastName, email, username, password, isActive, new ArrayList<>());
+                } else {
+                    Customer customer = new Customer(firstName, lastName, email, username, password, isActive,
+                            new ArrayList<>());
                     manageUsers.addUser(customer);
                 }
-                JOptionPane.showMessageDialog(null, "This User's username is " + username, "User Added Successfully!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "This User's username is " + username, "User Added Successfully!",
+                        JOptionPane.INFORMATION_MESSAGE);
                 listener.userAdded();
                 dispose();
             }
@@ -87,7 +87,6 @@ public class AdminUserSignupScreen extends JDialog {
         panel.add(roleComboBox, gbc);
         panel.add(activeCheckBox, gbc);
 
-
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 0));
         buttonPanel.add(submitButton);
         buttonPanel.add(cancelButton);
@@ -96,7 +95,7 @@ public class AdminUserSignupScreen extends JDialog {
         panel.add(buttonPanel, gbc);
 
         add(panel, BorderLayout.CENTER);
-	}
+    }
 
     private String createUsername(String username) {
         int random = (int) (Math.random() * 9000) + 1000;

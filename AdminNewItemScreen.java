@@ -33,23 +33,21 @@ public class AdminNewItemScreen extends JFrame {
         JTextField priceField = new JTextField(20);
         JTextField countField = new JTextField(20);
 
-        String[] types = {"Pancake", "Diner"};
+        String[] types = { "Pancake", "Diner" };
         JComboBox<String> typeComboBox = new JComboBox<>(types);
         typeComboBox.setPreferredSize(new Dimension(titleField.getPreferredSize()));
 
         JCheckBox activeCheckBox = new JCheckBox("Active");
 
-        
         JButton submitButton = new JButton("Add Menu Item");
         JButton cancelButton = new JButton("Cancel");
 
-        
-		cancelButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -64,13 +62,13 @@ public class AdminNewItemScreen extends JFrame {
                 if (type.equals("Diner")) {
                     DinerMenuItem diner = new DinerMenuItem(title, itemID, description, price, count, isActive);
                     manageMenu.addMenuItem(diner);
-                }
-                else {
+                } else {
                     PancakeMenuItem pancake = new PancakeMenuItem(title, itemID, description, price, count, isActive);
                     manageMenu.addMenuItem(pancake);
                 }
 
-                JOptionPane.showMessageDialog(null, "This Item's ID is " + itemID, "Item Added Successfully!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "This Item's ID is " + itemID, "Item Added Successfully!",
+                        JOptionPane.INFORMATION_MESSAGE);
                 listener.itemAdded();
                 dispose();
             }
@@ -101,5 +99,5 @@ public class AdminNewItemScreen extends JFrame {
         int random = (int) (Math.random() * 9000) + 1000;
         return String.valueOf(random);
     }
-    
+
 }

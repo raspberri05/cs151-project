@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class MenuManager {
     private cafe DB;
-	private ArrayList<MenuItem> menu;
+    private ArrayList<MenuItem> menu;
 
     public MenuManager() {
         DB = cafe.getInstance();
@@ -12,7 +12,8 @@ public class MenuManager {
     public String getMenuInfo(String itemID) {
         for (MenuItem m : menu) {
             if (m.getItemID().equals(itemID)) {
-                return "Name: " + m.getTitle() + "\nPrice: " + m.getPrice() + "\nCount: " + m.getCount() + "\nActive: " + (m.isActive() ? "Yes" : "No");
+                return "Name: " + m.getTitle() + "\nPrice: " + m.getPrice() + "\nCount: " + m.getCount() + "\nActive: "
+                        + (m.isActive() ? "Yes" : "No");
             }
         }
         return null;
@@ -26,7 +27,7 @@ public class MenuManager {
         DB.deleteMenuItem(itemID);
     }
 
-    public  ArrayList<MenuItem> getMenu() {
+    public ArrayList<MenuItem> getMenu() {
         return DB.getMenu();
     }
 

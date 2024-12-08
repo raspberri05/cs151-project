@@ -1,5 +1,5 @@
 public class DinerMenuItem implements MenuItem {
-        
+
     private String title;
     private String itemID;
     private String description;

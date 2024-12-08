@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginScreen extends JDialog {
-	
 
     public LoginScreen(JFrame parent) {
         super(parent, "Login", true);
@@ -19,7 +18,6 @@ public class LoginScreen extends JDialog {
         gbc.gridy = GridBagConstraints.RELATIVE;
         gbc.anchor = GridBagConstraints.WEST;
 
-
         JLabel usernameLabel = new JLabel("Username");
         JLabel passwordLabel = new JLabel("Password");
         JTextField usernameField = new JTextField(20);
@@ -28,11 +26,11 @@ public class LoginScreen extends JDialog {
         JButton cancelButton = new JButton("Cancel");
 
         cancelButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         loginButton.addActionListener(new ActionListener() {
             @Override
@@ -46,8 +44,7 @@ public class LoginScreen extends JDialog {
                     AdminDashboard adminDashboard = new AdminDashboard(parent, loggedInUser);
                     adminDashboard.setVisible(true);
                     dispose();
-                }
-                else {
+                } else {
                     CustomerDashboard customerDashboard = new CustomerDashboard(parent, loggedInUser);
                     customerDashboard.setVisible(true);
                     dispose();

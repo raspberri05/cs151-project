@@ -5,7 +5,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class UserManagerScreen extends JFrame implements AdminUserSignupScreen.UserListener, AdminUserEditScreen.UserListener {
+public class UserManagerScreen extends JFrame
+        implements AdminUserSignupScreen.UserListener, AdminUserEditScreen.UserListener {
 
     private Map<String, User> customers;
     private DefaultListModel<String> listModel; // Declare listModel as an instance variable
@@ -114,7 +115,7 @@ public class UserManagerScreen extends JFrame implements AdminUserSignupScreen.U
         });
 
         addButton.addActionListener(e -> {
-            AdminUserSignupScreen signupScreen = new AdminUserSignupScreen(this,this);
+            AdminUserSignupScreen signupScreen = new AdminUserSignupScreen(this, this);
             signupScreen.setVisible(true);
             updateListModel(userManager, listModel);
         });

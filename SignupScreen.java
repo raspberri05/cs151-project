@@ -4,11 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-
 public class SignupScreen extends JDialog {
 
-	public SignupScreen(JFrame parent) {
-		super(parent, "Sign Up", true);
+    public SignupScreen(JFrame parent) {
+        super(parent, "Sign Up", true);
         UserManager manageUsers = new UserManager();
         setLayout(new BorderLayout());
         setSize(400, 550);
@@ -32,19 +31,19 @@ public class SignupScreen extends JDialog {
         JTextField emailField = new JTextField(20);
         JPasswordField passwordField = new JPasswordField(20);
 
-        String[] roles = {"Customer", "Admin"};
+        String[] roles = { "Customer", "Admin" };
         JComboBox<String> roleComboBox = new JComboBox<>(roles);
         roleComboBox.setPreferredSize(new Dimension(firstNameField.getPreferredSize()));
 
         JButton submitButton = new JButton("Submit");
         JButton cancelButton = new JButton("Cancel");
 
-		cancelButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -58,12 +57,13 @@ public class SignupScreen extends JDialog {
                 if (role.equals("Admin")) {
                     Admin admin = new Admin(firstName, lastName, email, username, password, true);
                     manageUsers.addUser(admin);
-                }
-                else {
-                    Customer customer = new Customer(firstName, lastName, email, username, password, true, new ArrayList<>());
+                } else {
+                    Customer customer = new Customer(firstName, lastName, email, username, password, true,
+                            new ArrayList<>());
                     manageUsers.addUser(customer);
                 }
-                JOptionPane.showMessageDialog(null, "Your username is " + username, "Sign up successful!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Your username is " + username, "Sign up successful!",
+                        JOptionPane.INFORMATION_MESSAGE);
                 dispose();
             }
         });
@@ -87,7 +87,7 @@ public class SignupScreen extends JDialog {
         panel.add(buttonPanel, gbc);
 
         add(panel, BorderLayout.CENTER);
-	}
+    }
 
     private String createUsername(String username) {
         int random = (int) (Math.random() * 9000) + 1000;

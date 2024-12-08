@@ -3,9 +3,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CafeOnlineOrderSystemGUI extends JFrame{
-	
-	public CafeOnlineOrderSystemGUI(cafe myCafe) {
+public class CafeOnlineOrderSystemGUI extends JFrame {
+
+    public CafeOnlineOrderSystemGUI(cafe myCafe) {
 
         setTitle("Naya's Diner");
         setSize(735, 446);
@@ -16,7 +16,6 @@ public class CafeOnlineOrderSystemGUI extends JFrame{
         JLabel background = new JLabel(new ImageIcon("resources/background.jpg"));
         setContentPane(background);
         background.setLayout(new GridBagLayout());
-
 
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -67,14 +66,13 @@ public class CafeOnlineOrderSystemGUI extends JFrame{
 
         background.add(panel, gbc);
 
-
         add(panel);
 
-	}
+    }
 
-        public static void main(String[] args) {
-                cafe myCafe = cafe.DB;
-                CafeOnlineOrderSystemGUI gui = new CafeOnlineOrderSystemGUI(myCafe);
-                gui.setVisible(true);
-        }
+    public static void main(String[] args) {
+        cafe myCafe = cafe.DB;
+        CafeOnlineOrderSystemGUI gui = new CafeOnlineOrderSystemGUI(myCafe);
+        gui.setVisible(true);
+    }
 }
