@@ -4,8 +4,7 @@ Diner;BLT;1002;Classic bacon, lettuce, and tomato sandwich served on toasted bre
 Diner;Soup of the Day;1003;A delicious and warming soup that changes daily. Ask for today's special.;6.99;38;true;
 Diner;HotDog;1004;A juicy hotdog served in a soft bun with your choice of toppings.;5.49;43;true;
 Diner;Steamed Veggies and Brown Rice;1005;A healthy and nutritious dish of steamed vegetables served with brown rice.;7.49;26;true;
-Diner;Pasta;1006;Classic pasta with a choice of marinara or Alfredo sauce.;10.99;3;true;
-Pancake;Regular Pancake Breakfast;2002;Regular pancakes served with a choice of butter, syrup, or fruit topping.;4.99;30;true;
+Diner;Pasta;1006;Classic pasta with a choice of marinara or Alfredo sauce.;9.99;3;true;
 Users:
 Customer;Nora;Ellis;nora.ellis@yahoo.com;nora6245;Password1!;true;
 Customer;Cara;White;cara.white@gmail.com;cara7774;Password1!;true;
@@ -17,11 +16,9 @@ Customer;Zev;Kirby;zkirby114@hotmail.com;zev4941;Password1!;false;
 Customer;Emery;Smith;emsmith@hotmail.com;emery7745;Password1!;true;
 Customer;Landy;McKay;lanmckay@gmail.com;landyn9067;Password1!;true;
 Customer;Finn;Cruz;finncruz124@yahoo.com;finn3666;Password1!;true;
-Customer;k;k;kk;k1734;kl;false;
-Customer;Melani;Gray;melgray1256@gmail.com;melani9996;Password1!;true;
-Customer;Fox;Alfaro;foxalfaro@gmail.com;fox5792;Password1!;false;
+Customer;k;k;kk;k1734;kl;true;
+Customer;Melani;Gray;melgray1256@gmail.com;melani9996;Password1!;false;
 Customer;Angie;Banks;angiebanks@yahoo.com;angie0186;Password1!;true;
 Admin;Veda;Bandi;vedasahithi.bandi@sjsu.edu;veda8338;Password1!;true;
-Customer;Jane;Doe;janedoe@gmail.com;jane8136;Password1!;true;
+Customer;Jane;Doe;janedoe@hotmail.com;jane8136;Password1!;true;
 Admin;naya;singhania;naya.singhania@gmail.com;naya0000;password;true;
-Customer;Cleo;Higgins;cleohiggins@gmail.com;cleo1979;Password1!;true;

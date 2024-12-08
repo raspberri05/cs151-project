@@ -57,6 +57,8 @@ public class UserManagerScreen extends JFrame implements AdminUserSignupScreen.U
                 User user = customers.get(userName);
                 AdminUserEditScreen editScreen = new AdminUserEditScreen(this, user, this);
                 editScreen.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "No User Selected", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -93,6 +95,8 @@ public class UserManagerScreen extends JFrame implements AdminUserSignupScreen.U
                 confirmDialog.setSize(400, 200);
                 confirmDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                 confirmDialog.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "No User Selected", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -104,6 +108,8 @@ public class UserManagerScreen extends JFrame implements AdminUserSignupScreen.U
                 User user = customers.get(userName);
                 userManager.toggleActivation(user);
                 updateListModel(userManager, listModel);
+            } else {
+                JOptionPane.showMessageDialog(null, "No User Selected", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 

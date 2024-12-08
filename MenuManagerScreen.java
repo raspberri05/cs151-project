@@ -59,6 +59,8 @@ public class MenuManagerScreen extends JFrame implements AdminNewItemScreen.Item
                 AdminEditItemScreen editItemScreen = new AdminEditItemScreen(this, item, this);
                 editItemScreen.setVisible(true);
                 updateListModel(menuManager, listModel);
+            } else {
+                JOptionPane.showMessageDialog(null, "No Item Selected", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -95,6 +97,8 @@ public class MenuManagerScreen extends JFrame implements AdminNewItemScreen.Item
                 confirmDialog.setSize(400, 200);
                 confirmDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                 confirmDialog.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "No Item Selected", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -110,6 +114,8 @@ public class MenuManagerScreen extends JFrame implements AdminNewItemScreen.Item
                 String itemID = getItemID(selectedItem);
                 menuManager.toggleActivation(itemID);
                 updateListModel(menuManager, listModel);
+            } else {
+                JOptionPane.showMessageDialog(null, "No Item Selected", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -141,7 +147,6 @@ public class MenuManagerScreen extends JFrame implements AdminNewItemScreen.Item
 
     private void updateListModel(MenuManager menuManager, DefaultListModel<String> listModel) {
         menu = menuManager.getMenu();
-        System.out.println("hello");
         listModel.clear();
         for (MenuItem item : menu) {
             listModel.addElement(item.getItemID() + ": " + item.getTitle() + ", " + item.getPrice() + ", " + (item.isActive() ? "Active" : "Inactive"));
