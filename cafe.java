@@ -17,8 +17,8 @@ public enum cafe {
 	private cafe() {
 		menu = new ArrayList<>();
 		users = new HashMap<>();
-		loadUsersFromFile("resources/cafeData.txt");
-		loadMenuFromFile("resources/cafeData.txt");
+		loadUsersFromFile("cafeData.txt");
+		loadMenuFromFile("cafeData.txt");
 	}
 
 	public static cafe getInstance() {
@@ -155,7 +155,7 @@ public enum cafe {
 	}
 
 	private void updateUsersFile() {
-		String filename = "resources/cafeData.txt";
+		String filename = "cafeData.txt";
 		List<String> fileContent = new ArrayList<>();
 		boolean isUserSection = false;
 
@@ -188,7 +188,7 @@ public enum cafe {
 	}
 
 	private void updateMenuFile() {
-		String filename = "resources/cafeData.txt";
+		String filename = "cafeData.txt";
 		List<String> menuContent = new ArrayList<>();
 		List<String> userContent = new ArrayList<>();
 		boolean isMenuSection = false;

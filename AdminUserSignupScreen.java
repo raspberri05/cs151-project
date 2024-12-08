@@ -10,7 +10,7 @@ public class AdminUserSignupScreen extends JDialog {
     }
 
     public AdminUserSignupScreen(JFrame parent, UserListener listener) {
-        super(parent, "Sign Up", true);
+        super(parent, "Create User", true);
         UserManager manageUsers = new UserManager();
         setLayout(new BorderLayout());
         setSize(600, 700);

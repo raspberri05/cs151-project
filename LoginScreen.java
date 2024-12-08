@@ -43,10 +43,12 @@ public class LoginScreen extends JDialog {
                 if (role.equals("Admin")) {
                     AdminDashboard adminDashboard = new AdminDashboard(parent, loggedInUser);
                     adminDashboard.setVisible(true);
+                    JOptionPane.showMessageDialog(parent, "Welcome, " + loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
                     dispose();
                 } else {
                     CustomerDashboard customerDashboard = new CustomerDashboard(parent, loggedInUser);
                     customerDashboard.setVisible(true);
+                    JOptionPane.showMessageDialog(parent, "Welcome, " + loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
                     dispose();
                 }
             }

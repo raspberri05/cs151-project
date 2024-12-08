@@ -10,7 +10,7 @@ public class AdminUserEditScreen extends JFrame {
     }
 
     public AdminUserEditScreen(JFrame parent, User user, UserListener listener) {
-        super("Sign Up");
+        super("Edit User");
         UserManager manageUsers = new UserManager();
         setLayout(new BorderLayout());
         setSize(600, 700);
